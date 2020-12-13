@@ -21,7 +21,13 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
   var password = ""
   var available_chars = "";
-  var password_length = window.prompt("Length of password?")
+  var password_length = window.prompt("Length of password? (minimum length of 1)")
+  while (true) {
+    if (isNaN(password_length) || password_length < 1) {
+      password_length = window.prompt("Invalid length. Please enter a password length greater than 0.")
+    }
+    break
+  }
   var lowercase_select = window.confirm("Include lowercase characters?");
   var uppercase_select = window.confirm("Include uppercase characters?");
   var numeric_select = window.confirm("Include numeric characters?");
@@ -43,7 +49,6 @@ function generatePassword() {
   if (special_select) {
     available_chars = available_chars.concat(special_chars)
   }
-  console.log(available_chars)
   for (var x = 0; x < password_length; x++) {
     var new_char = available_chars[Math.floor(Math.random() * available_chars.length)]
     password = password.concat(new_char)
