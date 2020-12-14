@@ -4,9 +4,9 @@
 Randomly generate a password of a user selectable length and user selectable character options.
 
 ## Built With
-HTML
-CSS
-JavaScript
+* HTML
+* CSS
+* JavaScript
 
 ## Website
 https://brandonag.github.io/password-generator/

@@ -21,10 +21,10 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
   var password = ""
   var available_chars = "";
-  var password_length = window.prompt("Length of password? (minimum length of 1)")
+  var password_length = window.prompt("Length of password? (minimum: 8; maximum: 128)")
   while (true) {
-    if (isNaN(password_length) || password_length < 1) {
-      password_length = window.prompt("Invalid length. Please enter a password length greater than 0.")
+    if (isNaN(password_length) || password_length < 8 || password_length > 128) {
+      password_length = window.prompt("Invalid length. Please enter a password length greater than 0 and less than 129.")
     }
     break
   }
@@ -32,11 +32,6 @@ function generatePassword() {
   var uppercase_select = window.confirm("Include uppercase characters?");
   var numeric_select = window.confirm("Include numeric characters?");
   var special_select = window.confirm("Include special characters?")
-  alert("Selected Options\nTotal Characters: " + password_length +
-        "\nLowercase Characters Enabled: " +lowercase_select +
-        "\nUppercase Characters Enabled: " + uppercase_select +
-        "\nNumeric Characters Enabled: " + numeric_select +
-        "\nSpecial Characters Enabled: " + special_select)
   if (lowercase_select) {
     available_chars = available_chars.concat(lowercase_chars)
   }
@@ -48,6 +43,15 @@ function generatePassword() {
   }
   if (special_select) {
     available_chars = available_chars.concat(special_chars)
+  }
+  alert("Selected Options\nTotal Characters: " + password_length +
+        "\nLowercase Characters Enabled: " +lowercase_select +
+        "\nUppercase Characters Enabled: " + uppercase_select +
+        "\nNumeric Characters Enabled: " + numeric_select +
+        "\nSpecial Characters Enabled: " + special_select);
+  if (available_chars.length < 1) {
+    window.alert("No character options selected. Please choose at least 1 character type.");
+    return "Must choose at least 1 character type."
   }
   for (var x = 0; x < password_length; x++) {
     var new_char = available_chars[Math.floor(Math.random() * available_chars.length)]
