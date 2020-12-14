@@ -24,9 +24,11 @@ function generatePassword() {
   var password_length = window.prompt("Length of password? (minimum: 8; maximum: 128)")
   while (true) {
     if (isNaN(password_length) || password_length < 8 || password_length > 128) {
-      password_length = window.prompt("Invalid length. Please enter a password length greater than 0 and less than 129.")
+      password_length = window.prompt("Invalid length. Please enter a password length greater than 7 and less than 129.")
     }
-    break
+    else{
+      break
+    }
   }
   var lowercase_select = window.confirm("Include lowercase characters?");
   var uppercase_select = window.confirm("Include uppercase characters?");
